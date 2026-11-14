@@ -37,8 +37,10 @@ flowchart LR
     F --> G["Stage 5: Decision-Support Output<br/>- Annotated Instance Masks & Boxes<br/>- Pixel-Area ULSI Severity (0-100)<br/>- HITL Inspector Triage Flag<br/>- KCCA Folium GIS Map, CSV & GeoJSON"]
 ```
 
-### Visual Demonstration of the 3-Stage Pipeline & Baseline Comparison
+### Visual Demonstration of the 3-Stage Pipeline, Diagnostic X-Ray Overlays & Baseline Comparison
 ![3-Stage Processing Pipeline](outputs/demo_3stage_pipeline.png)
+
+![4 Diagnostic Overlay Modes](outputs/demo_diagnostic_overlays.png)
 
 ![Baseline vs Proposed D3 Side-by-Side Comparison](outputs/demo_baseline_vs_proposed.png)
 

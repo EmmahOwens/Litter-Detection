@@ -1,15 +1,22 @@
-"""Uncertainty-Gated Conditional 2x2 SAHI Tiling & Multi-Backend Inference Engine (D3).
+"""Uncertainty-Gated Conditional SAHI Tiling, Visual X-Ray Overlays & Multi-Backend Engine (D3).
 
 Supports:
 1. Web-Ready ONNX Runtime (`models/best.onnx`) and PyTorch (`models/best.pt`) execution.
-2. Three selectable pipeline modes for controlled ablation and live PC demonstration:
+2. Four selectable pipeline modes for controlled ablation and live PC demonstration:
    - `baseline`: Single-pass inference at 640px, no DIP preprocessing, uniform conf=0.25.
    - `proposed_conditional`: CIE LAB CLAHE + Adaptive Gamma -> Fast Full-Frame Pass ->
-     Uncertainty/Clutter Gate -> Conditional 2x2 Overlapping SAHI Tiles -> Class-Aware NMS ->
-     Validation F1-Optimal Per-Class Confidence Calibration.
+     Uncertainty/Clutter Gate -> Conditional 2x2 Overlapping SAHI Tiles (up to 5 passes) ->
+     Class-Aware NMS -> Validation F1-Optimal Per-Class Confidence Calibration.
+   - `proposed_smart_2tile`: Ground-focused 2-tile conditional SAHI (1 full pass + 2 lower
+     ground-plane 65% tiles = 3 passes max), cutting CPU latency by ~40% on street scenes.
    - `unconditional_sahi`: Always executes 1 Full-Frame Pass + 4 SAHI Tiles (5 passes total).
-3. Full polygon mask coordinate stitching across tiles (`poly + [ox, oy]`) so small objects
-   recovered by SAHI tiles retain pixel-accurate segmentation masks for ULSI scoring and display.
+3. Four diagnostic visualization modes:
+   - `standard`: Instance masks + bounding boxes + material confidence tags.
+   - `sahi_grid_xray`: Visualizes the overlapping SAHI tile boundaries and color-codes
+     Full-Frame vs. Tile-Recovered small objects.
+   - `mask_spotlight`: Dims the background to grayscale so segmented litter masks pop in vivid color.
+   - `dip_edge_heatmap`: Visualizes the Sobel local edge-contrast boost from LAB-CLAHE.
+4. Automatic zoomed-in instance crop gallery (`extract_instance_crops`) for inspector review.
 """
 from pathlib import Path
 import time
@@ -155,14 +162,7 @@ def should_trigger_conditional_sahi(
     img_h: int,
     imgsz: int = 640,
 ) -> Tuple[bool, str]:
-    """Evaluate the Uncertainty & Small-Object Gate after the initial Full-Frame pass.
-
-    Triggers 2x2 SAHI tiling if ANY of the following hold:
-    1. Borderline/uncertain proposals exist (0.17 <= conf < 0.35).
-    2. Multiple small-object candidates (< 32x32 px at 640px scale) or small uncertain item.
-    3. Cluttered street scene (>= 3 candidate items in the initial pass).
-    4. Rare/transparent material (`Glass` or `Other`) is tentatively proposed (0.17 <= conf < 0.42).
-    """
+    """Evaluate the Uncertainty & Small-Object Gate after the initial Full-Frame pass."""
     valid_cands = [c for c in full_candidates if float(c["score"]) >= 0.17]
     if not valid_cands:
         return False, "Skipped (Clean scene — 0 initial proposals >= 0.17)"
@@ -203,18 +203,62 @@ def render_segmented_annotations(
     mode_label: str = "Proposed D3",
     sahi_status: str = "Auto",
     latency_ms: float = 0.0,
+    overlay_style: str = "standard",
+    tile_windows: Optional[List[Tuple[int, int, int, int]]] = None,
+    raw_bgr_for_delta: Optional[np.ndarray] = None,
 ) -> np.ndarray:
-    """Draw instance segmentation masks, boxes, material labels, and a top telemetry banner."""
-    canvas = img_bgr.copy()
-    mask_overlay = img_bgr.copy()
-    H, W = canvas.shape[:2]
+    """Draw instance masks, boxes, material labels, diagnostic overlays, and top telemetry bar."""
+    H, W = img_bgr.shape[:2]
 
+    if overlay_style == "dip_edge_heatmap" and raw_bgr_for_delta is not None:
+        l_raw = cv2.cvtColor(raw_bgr_for_delta, cv2.COLOR_BGR2LAB)[:, :, 0]
+        l_enh = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2LAB)[:, :, 0]
+        g_raw = cv2.magnitude(
+            cv2.Sobel(l_raw, cv2.CV_32F, 1, 0, ksize=3),
+            cv2.Sobel(l_raw, cv2.CV_32F, 0, 1, ksize=3),
+        )
+        g_enh = cv2.magnitude(
+            cv2.Sobel(l_enh, cv2.CV_32F, 1, 0, ksize=3),
+            cv2.Sobel(l_enh, cv2.CV_32F, 0, 1, ksize=3),
+        )
+        diff = np.clip((g_enh - g_raw) * 3.2, 0, 255).astype(np.uint8)
+        heat = cv2.applyColorMap(diff, cv2.COLORMAP_TURBO)
+        canvas = cv2.addWeighted(img_bgr, 0.55, heat, 0.45, 0)
+    elif overlay_style == "mask_spotlight":
+        gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
+        canvas = (cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR) * 0.45).astype(np.uint8)
+    else:
+        canvas = img_bgr.copy()
+
+    mask_overlay = canvas.copy()
     font_scale = max(0.48, min(0.85, max(H, W) / 1400.0))
     thickness = max(2, int(max(H, W) / 600))
 
+    # Draw SAHI Tile Windows if in X-Ray mode
+    if overlay_style == "sahi_grid_xray" and tile_windows:
+        tile_colors = [(255, 220, 0), (0, 220, 255), (255, 100, 255), (100, 255, 100)]
+        for t_idx, (ox, oy, tw, th) in enumerate(tile_windows):
+            tc = tile_colors[t_idx % len(tile_colors)]
+            cv2.rectangle(canvas, (ox + 2, oy + 2), (ox + tw - 2, oy + th - 2), tc, 2)
+            cv2.putText(
+                canvas,
+                f"SAHI Tile #{t_idx + 1} ({tw}x{th})",
+                (ox + 10, oy + 26 + (t_idx % 2) * 22),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                max(0.45, font_scale * 0.8),
+                tc,
+                2,
+                cv2.LINE_AA,
+            )
+        mask_overlay = canvas.copy()
+
     for det in detections:
         mat = det["material"]
-        color = MATERIAL_COLORS_BGR.get(mat, (0, 200, 255))
+        if overlay_style == "sahi_grid_xray":
+            # Color-code by detection origin: Neon Green = SAHI Tile Recovered, Cyan = Full-Frame
+            color = (40, 245, 80) if det.get("source") == "sahi_tile" else (245, 190, 40)
+        else:
+            color = MATERIAL_COLORS_BGR.get(mat, (0, 200, 255))
         poly = det.get("polygon")
         x1, y1, x2, y2 = [int(round(v)) for v in det["box_xyxy"]]
 
@@ -225,19 +269,22 @@ def render_segmented_annotations(
         else:
             cv2.rectangle(mask_overlay, (x1, y1), (x2, y2), color, -1)
 
-    # Blend filled segmentation masks at 38% opacity
-    canvas = cv2.addWeighted(mask_overlay, 0.38, canvas, 0.62, 0)
+    alpha_fill = 0.58 if overlay_style == "mask_spotlight" else 0.38
+    canvas = cv2.addWeighted(mask_overlay, alpha_fill, canvas, 1.0 - alpha_fill, 0)
 
     # Draw bounding boxes and readable tags
-    for det in detections:
+    for idx, det in enumerate(detections, start=1):
         mat = det["material"]
         cf = det["confidence"]
         src_tag = " [Tile]" if det.get("source") == "sahi_tile" else ""
-        color = MATERIAL_COLORS_BGR.get(mat, (0, 200, 255))
+        if overlay_style == "sahi_grid_xray":
+            color = (30, 200, 60) if det.get("source") == "sahi_tile" else (210, 140, 20)
+        else:
+            color = MATERIAL_COLORS_BGR.get(mat, (0, 200, 255))
         x1, y1, x2, y2 = [int(round(v)) for v in det["box_xyxy"]]
 
         cv2.rectangle(canvas, (x1, y1), (x2, y2), color, thickness)
-        label = f"{mat} {cf:.2f}{src_tag}"
+        label = f"#{idx} {mat} {cf:.2f}{src_tag}"
         (tw, th), baseline = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, font_scale, thickness)
         ty1 = max(0, y1 - th - baseline - 6)
         ty2 = ty1 + th + baseline + 6
@@ -274,6 +321,44 @@ def render_segmented_annotations(
     return np.vstack([header, canvas])
 
 
+def extract_instance_crops(
+    work_bgr: np.ndarray, detections: List[Dict[str, Any]], pad_px: int = 28
+) -> List[Tuple[np.ndarray, str]]:
+    """Extract zoomed-in RGB thumbnails for each detected litter instance for gallery review."""
+    H, W = work_bgr.shape[:2]
+    gallery_items: List[Tuple[np.ndarray, str]] = []
+
+    for idx, det in enumerate(detections, start=1):
+        x1, y1, x2, y2 = [int(round(v)) for v in det["box_xyxy"]]
+        cx1, cy1 = max(0, x1 - pad_px), max(0, y1 - pad_px)
+        cx2, cy2 = min(W, x2 + pad_px), min(H, y2 + pad_px)
+        if cx2 <= cx1 or cy2 <= cy1:
+            continue
+
+        crop = work_bgr[cy1:cy2, cx1:cx2].copy()
+        mat = det["material"]
+        color = MATERIAL_COLORS_BGR.get(mat, (0, 200, 255))
+
+        poly = det.get("polygon")
+        if poly is not None and len(poly) >= 3:
+            pts = (poly - np.array([cx1, cy1], dtype=np.float32)).astype(np.int32)
+            overlay = crop.copy()
+            cv2.fillPoly(overlay, [pts], color)
+            crop = cv2.addWeighted(overlay, 0.35, crop, 0.65, 0)
+            cv2.polylines(crop, [pts], isClosed=True, color=color, thickness=2)
+
+        cv2.rectangle(crop, (x1 - cx1, y1 - cy1), (x2 - cx1, y2 - cy1), color, 2)
+        crop_rgb = cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)
+        src_badge = "SAHI Tile" if det.get("source") == "sahi_tile" else "Full Frame"
+        caption = (
+            f"#{idx} {mat} (conf={det['confidence']:.2f}) | "
+            f"{det['coco_size_tier'].split(' ')[0]} | {src_badge}"
+        )
+        gallery_items.append((crop_rgb, caption))
+
+    return gallery_items
+
+
 def run_litter_pipeline(
     engine: LitterSegmentationEngine,
     img_bgr: np.ndarray,
@@ -282,21 +367,12 @@ def run_litter_pipeline(
     apply_dip_override: Optional[bool] = None,
     base_conf_override: Optional[float] = None,
     use_calibrated_thresholds: bool = True,
+    overlay_style: str = "standard",
     imgsz: int = 640,
     scene_idx: int = 0,
     image_name: str = "sample.jpg",
 ) -> Dict[str, Any]:
-    """Execute the complete litter segmentation pipeline and return images + telemetry.
-
-    Args:
-        engine: LitterSegmentationEngine instance.
-        img_bgr: Input BGR image array.
-        backend: 'onnx' (best.onnx) or 'pytorch' (best.pt).
-        pipeline_mode:
-            - 'baseline': Single-pass, no DIP, uniform conf=0.25, no calibration.
-            - 'proposed_conditional': DIP + Full-Frame + Uncertainty-Gated 2x2 SAHI + Calibrated thresholds.
-            - 'unconditional_sahi': DIP + Full-Frame + Always-On 2x2 SAHI + Calibrated thresholds.
-    """
+    """Execute the complete litter segmentation pipeline and return images, crops & telemetry."""
     model, model_path = engine.get_model(backend=backend)
     orig_H, orig_W = img_bgr.shape[:2]
 
@@ -346,30 +422,52 @@ def run_litter_pipeline(
 
     sahi_triggered = False
     sahi_reason = "Disabled (Baseline Single-Pass)"
+    tile_windows: List[Tuple[int, int, int, int]] = []
 
     if pipeline_mode == "unconditional_sahi":
         sahi_triggered = True
         sahi_reason = "Forced On (Unconditional 2x2 SAHI — 5 Passes)"
-    elif pipeline_mode == "proposed_conditional":
+    elif pipeline_mode in ("proposed_conditional", "proposed_smart_2tile"):
         sahi_triggered, sahi_reason = should_trigger_conditional_sahi(
             candidates, img_w=W, img_h=H, imgsz=imgsz
         )
 
     if sahi_triggered:
         tw, th = max(64, int(W * 0.60)), max(64, int(H * 0.60))
-        tile_offsets = [(0, 0), (W - tw, 0), (0, H - th), (W - tw, H - th)]
-        for ox, oy in tile_offsets:
-            tile_bgr = work_bgr[oy : oy + th, ox : ox + tw]
-            res_tile = model.predict(tile_bgr, imgsz=imgsz, conf=0.16, verbose=False)[0]
-            passes_executed += 1
-            tile_cands = _extract_candidates_from_result(
-                res_tile,
-                offset_x=ox,
-                offset_y=oy,
-                score_weight=0.95,
-                source_tag="sahi_tile",
-            )
-            candidates.extend(tile_cands)
+        if pipeline_mode == "proposed_smart_2tile":
+            # Ground-Plane 2-Tile Mode: focuses on bottom-left and bottom-right road surface
+            gh = max(64, int(H * 0.68))
+            tile_offsets = [(0, H - gh), (W - tw, H - gh)]
+            for ox, oy in tile_offsets:
+                tile_windows.append((ox, oy, tw, gh))
+                tile_bgr = work_bgr[oy : oy + gh, ox : ox + tw]
+                res_tile = model.predict(tile_bgr, imgsz=imgsz, conf=0.16, verbose=False)[0]
+                passes_executed += 1
+                candidates.extend(
+                    _extract_candidates_from_result(
+                        res_tile,
+                        offset_x=ox,
+                        offset_y=oy,
+                        score_weight=0.95,
+                        source_tag="sahi_tile",
+                    )
+                )
+        else:
+            tile_offsets = [(0, 0), (W - tw, 0), (0, H - th), (W - tw, H - th)]
+            for ox, oy in tile_offsets:
+                tile_windows.append((ox, oy, tw, th))
+                tile_bgr = work_bgr[oy : oy + th, ox : ox + tw]
+                res_tile = model.predict(tile_bgr, imgsz=imgsz, conf=0.16, verbose=False)[0]
+                passes_executed += 1
+                candidates.extend(
+                    _extract_candidates_from_result(
+                        res_tile,
+                        offset_x=ox,
+                        offset_y=oy,
+                        score_weight=0.95,
+                        source_tag="sahi_tile",
+                    )
+                )
 
     infer_ms = (time.perf_counter() - t0_inf) * 1000.0
 
@@ -380,7 +478,6 @@ def run_litter_pipeline(
     scale_to_640 = float(imgsz) / float(max(W, H))
     final_detections: List[Dict[str, Any]] = []
 
-    # Use a compact 320p mask grid to compute exact pixel mask coverage in < 1 ms
     grid_scale = min(1.0, 320.0 / float(max(W, H)))
     gW, gH = max(16, int(round(W * grid_scale))), max(16, int(round(H * grid_scale)))
 
@@ -402,10 +499,10 @@ def run_litter_pipeline(
             continue
 
         box = cand["box"]
-        # Suppress low-confidence upper-sky/tree-canopy false positives from top SAHI tiles
         cy = 0.5 * (float(box[1]) + float(box[3]))
         if cand["source"] == "sahi_tile" and cy < 0.22 * H and sc < 0.42:
             continue
+
         bw = max(0.0, float(box[2] - box[0]))
         bh = max(0.0, float(box[3] - box[1]))
         scaled_area = (bw * bh) * (scale_to_640 ** 2)
@@ -442,7 +539,7 @@ def run_litter_pipeline(
     post_ms = (time.perf_counter() - t0_post) * 1000.0
     total_ms = dip_ms + infer_ms + post_ms
 
-    # --- Stage 5: Output Generation (ULSI Severity, HITL Triage & Annotated Visualization) ---
+    # --- Stage 5: Output Generation (ULSI Severity, HITL Triage, Crops & Visualization) ---
     clean_dets_for_json = [
         {k: v for k, v in d.items() if k != "polygon"} for d in final_detections
     ]
@@ -455,7 +552,8 @@ def run_litter_pipeline(
 
     mode_display = {
         "baseline": "Baseline (Single-Pass, No DIP)",
-        "proposed_conditional": "Proposed D3 (DIP + Conditional SAHI)",
+        "proposed_conditional": "Proposed D3 (DIP + Conditional 2x2 SAHI)",
+        "proposed_smart_2tile": "Proposed D3 Fast (DIP + Smart 2-Tile Ground SAHI)",
         "unconditional_sahi": "Unconditional 2x2 SAHI (5 Passes)",
     }.get(pipeline_mode, pipeline_mode)
 
@@ -463,14 +561,20 @@ def run_litter_pipeline(
         work_bgr,
         final_detections,
         mode_label=mode_display,
-        sahi_status="Triggered (5 passes)" if sahi_triggered else "Fast Pass (1 pass)",
+        sahi_status=f"Triggered ({passes_executed} passes)" if sahi_triggered else "Fast Pass (1 pass)",
         latency_ms=total_ms,
+        overlay_style=overlay_style,
+        tile_windows=tile_windows,
+        raw_bgr_for_delta=input_bgr,
     )
+
+    instance_crops = extract_instance_crops(work_bgr, final_detections)
 
     telemetry = {
         "backend": "ONNX Runtime (best.onnx)" if "onnx" in backend.lower() else "PyTorch (best.pt)",
         "model_file": Path(model_path).name,
         "pipeline_mode": mode_display,
+        "overlay_style": overlay_style,
         "image_resolution": f"{W}x{H}",
         "dip_enabled": do_dip,
         "dip_diagnostics": dip_diag,
@@ -489,6 +593,8 @@ def run_litter_pipeline(
         "raw_rgb": cv2.cvtColor(input_bgr, cv2.COLOR_BGR2RGB),
         "preprocessed_rgb": cv2.cvtColor(work_bgr, cv2.COLOR_BGR2RGB),
         "annotated_rgb": cv2.cvtColor(annotated_bgr, cv2.COLOR_BGR2RGB),
+        "instance_crops": instance_crops,
+        "detections_table": clean_dets_for_json,
         "telemetry": telemetry,
         "ulsi_report": ulsi_report,
     }

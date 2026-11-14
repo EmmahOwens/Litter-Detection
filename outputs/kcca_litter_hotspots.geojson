@@ -28,10 +28,12 @@
         "glass_count": 0,
         "paper_count": 0,
         "other_count": 1,
-        "inference_sec": 2.016,
+        "inference_sec": 9.03,
         "manual_screening_proxy_sec": 19.0,
-        "assisted_screening_proxy_sec": 7.02,
-        "screening_time_saved_pct": 63.1
+        "assisted_screening_proxy_sec": 14.03,
+        "screening_time_saved_pct": 26.2,
+        "sahi_triggered": true,
+        "latency_ms": 9029.74
       }
     },
     {
@@ -61,10 +63,12 @@
         "glass_count": 1,
         "paper_count": 0,
         "other_count": 0,
-        "inference_sec": 1.987,
+        "inference_sec": 9.393,
         "manual_screening_proxy_sec": 33.0,
-        "assisted_screening_proxy_sec": 6.99,
-        "screening_time_saved_pct": 78.8
+        "assisted_screening_proxy_sec": 14.39,
+        "screening_time_saved_pct": 56.4,
+        "sahi_triggered": true,
+        "latency_ms": 9393.17
       }
     },
     {
@@ -94,10 +98,12 @@
         "glass_count": 0,
         "paper_count": 0,
         "other_count": 1,
-        "inference_sec": 1.967,
+        "inference_sec": 9.301,
         "manual_screening_proxy_sec": 15.5,
-        "assisted_screening_proxy_sec": 3.47,
-        "screening_time_saved_pct": 77.6
+        "assisted_screening_proxy_sec": 10.8,
+        "screening_time_saved_pct": 30.3,
+        "sahi_triggered": true,
+        "latency_ms": 9300.62
       }
     },
     {
@@ -127,10 +133,12 @@
         "glass_count": 0,
         "paper_count": 0,
         "other_count": 0,
-        "inference_sec": 2.003,
+        "inference_sec": 8.297,
         "manual_screening_proxy_sec": 15.5,
-        "assisted_screening_proxy_sec": 3.5,
-        "screening_time_saved_pct": 77.4
+        "assisted_screening_proxy_sec": 9.8,
+        "screening_time_saved_pct": 36.8,
+        "sahi_triggered": true,
+        "latency_ms": 8296.85
       }
     },
     {
@@ -160,10 +168,12 @@
         "glass_count": 0,
         "paper_count": 0,
         "other_count": 0,
-        "inference_sec": 1.983,
+        "inference_sec": 6.531,
         "manual_screening_proxy_sec": 22.5,
-        "assisted_screening_proxy_sec": 6.98,
-        "screening_time_saved_pct": 69.0
+        "assisted_screening_proxy_sec": 11.53,
+        "screening_time_saved_pct": 48.8,
+        "sahi_triggered": true,
+        "latency_ms": 6531.21
       }
     },
     {
@@ -193,10 +203,12 @@
         "glass_count": 0,
         "paper_count": 9,
         "other_count": 0,
-        "inference_sec": 2.004,
+        "inference_sec": 7.179,
         "manual_screening_proxy_sec": 43.5,
-        "assisted_screening_proxy_sec": 7.0,
-        "screening_time_saved_pct": 83.9
+        "assisted_screening_proxy_sec": 12.18,
+        "screening_time_saved_pct": 72.0,
+        "sahi_triggered": true,
+        "latency_ms": 7179.1
       }
     },
     {
@@ -226,10 +238,12 @@
         "glass_count": 0,
         "paper_count": 0,
         "other_count": 2,
-        "inference_sec": 1.975,
+        "inference_sec": 7.124,
         "manual_screening_proxy_sec": 26.0,
-        "assisted_screening_proxy_sec": 6.98,
-        "screening_time_saved_pct": 73.2
+        "assisted_screening_proxy_sec": 12.12,
+        "screening_time_saved_pct": 53.4,
+        "sahi_triggered": true,
+        "latency_ms": 7123.93
       }
     },
     {
@@ -259,10 +273,12 @@
         "glass_count": 0,
         "paper_count": 0,
         "other_count": 0,
-        "inference_sec": 0.373,
+        "inference_sec": 1.542,
         "manual_screening_proxy_sec": 12.0,
-        "assisted_screening_proxy_sec": 1.87,
-        "screening_time_saved_pct": 84.4
+        "assisted_screening_proxy_sec": 3.04,
+        "screening_time_saved_pct": 74.7,
+        "sahi_triggered": false,
+        "latency_ms": 1542.0
       }
     },
     {
@@ -292,10 +308,12 @@
         "glass_count": 0,
         "paper_count": 0,
         "other_count": 1,
-        "inference_sec": 2.037,
+        "inference_sec": 6.659,
         "manual_screening_proxy_sec": 33.0,
-        "assisted_screening_proxy_sec": 7.04,
-        "screening_time_saved_pct": 78.7
+        "assisted_screening_proxy_sec": 11.66,
+        "screening_time_saved_pct": 64.7,
+        "sahi_triggered": true,
+        "latency_ms": 6658.82
       }
     },
     {
@@ -325,10 +343,12 @@
         "glass_count": 0,
         "paper_count": 2,
         "other_count": 0,
-        "inference_sec": 1.944,
+        "inference_sec": 6.687,
         "manual_screening_proxy_sec": 29.5,
-        "assisted_screening_proxy_sec": 6.94,
-        "screening_time_saved_pct": 76.5
+        "assisted_screening_proxy_sec": 11.69,
+        "screening_time_saved_pct": 60.4,
+        "sahi_triggered": true,
+        "latency_ms": 6687.17
       }
     },
     {
@@ -358,10 +378,12 @@
         "glass_count": 0,
         "paper_count": 0,
         "other_count": 0,
-        "inference_sec": 1.935,
+        "inference_sec": 8.379,
         "manual_screening_proxy_sec": 15.5,
-        "assisted_screening_proxy_sec": 6.94,
-        "screening_time_saved_pct": 55.2
+        "assisted_screening_proxy_sec": 13.38,
+        "screening_time_saved_pct": 13.7,
+        "sahi_triggered": true,
+        "latency_ms": 8378.53
       }
     }
   ]

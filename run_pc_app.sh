@@ -11,6 +11,9 @@ else
     PYTHON_BIN="python3"
 fi
 
+export MPLCONFIGDIR="${TMPDIR:-/tmp}/matplotlib-cache"
+mkdir -p "$MPLCONFIGDIR"
+
 echo "======================================================================"
 echo "  Urban Litter Instance Segmentation & Municipal Severity System (D3) "
 echo "  Target Platform: User-End PC / Laptop Web Interface                 "
