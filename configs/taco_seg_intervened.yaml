@@ -1,0 +1,10 @@
+path: /kaggle/working/taco_seg
+train: train_intervened.txt
+val: images/val
+test: images/test
+names:
+  0: Plastic
+  1: Metal
+  2: Glass
+  3: Paper
+  4: Other

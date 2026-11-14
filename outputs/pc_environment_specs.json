@@ -1,0 +1,21 @@
+{
+  "os": "Linux 6.6.155-amd64-desktop-hwe (#25.01.00.33 SMP PREEMPT_DYNAMIC Fri Aug 28 16:55:32 CST 2026)",
+  "architecture": "x86_64",
+  "processor": "Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz",
+  "physical_cores": 2,
+  "logical_threads": 4,
+  "total_ram_gib": 7.62,
+  "available_ram_gib": 4.0,
+  "gpu_accelerated": false,
+  "python_version": "3.12.13",
+  "pytorch_version": "2.15.0+cpu",
+  "onnxruntime_version": "1.32.0",
+  "onnxruntime_providers": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "ultralytics_version": "8.4.212",
+  "opencv_version": "5.0.0",
+  "pytorch_model_mb": 22.25,
+  "onnx_model_mb": 39.85
+}

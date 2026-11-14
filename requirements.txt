@@ -1,0 +1,15 @@
+# Capstone Deliverable 3 — Urban Litter Instance Segmentation & PC Deployment
+# Tip for CPU-only PCs/Laptops: install CPU-only PyTorch first to avoid 2GB+ CUDA downloads:
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+ultralytics>=8.4.0
+onnxruntime>=1.19.0
+opencv-python-headless>=4.10.0
+numpy>=1.26.0
+pandas>=2.2.0
+matplotlib>=3.9.0
+Pillow>=10.4.0
+gradio>=5.0.0
+folium>=0.17.0
+psutil>=6.0.0
+PyYAML>=6.0.1

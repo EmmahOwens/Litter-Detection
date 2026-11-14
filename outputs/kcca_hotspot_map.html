@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_843f71a8684ddfe1b0b60a5a5eca016b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_843f71a8684ddfe1b0b60a5a5eca016b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_843f71a8684ddfe1b0b60a5a5eca016b = L.map(
+                "map_843f71a8684ddfe1b0b60a5a5eca016b",
+                {
+                    center: [0.3163, 32.5822],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3b2fafac5ad90e97b40162f23451ceb3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3b2fafac5ad90e97b40162f23451ceb3.addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+            var circle_marker_2e47e1208fc2da2755bfc226b7bd45db = L.circleMarker(
+                [0.3038, 32.5697],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_726b4dd4f643fb27d272d22790af1d67 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_10d6331555034ddb633d8841c60cfadf = $(`<div id="html_10d6331555034ddb633d8841c60cfadf" style="width: 100.0%; height: 100.0%;"><b>Image:</b> batch_10_000010.jpg<br><b>Zone:</b> Central Division (Nakasero - Demo GIS)<br><b>ULSI Severity:</b> 19.0/100 (Low / Routine)<br><b>Total Items:</b> 2 (Small: 2) | <b>Mask Area:</b> 0.178%<br><b>Materials:</b> Plastic=1, Metal=0, Glass=0, Paper=0, Other=1<br><b>HITL Triage:</b> Flagged for Inspector Review</div>`)[0];
+                popup_726b4dd4f643fb27d272d22790af1d67.setContent(html_10d6331555034ddb633d8841c60cfadf);
+            
+        
+
+        circle_marker_2e47e1208fc2da2755bfc226b7bd45db.bindPopup(popup_726b4dd4f643fb27d272d22790af1d67)
+        ;
+
+        
+    
+    
+            var circle_marker_1843556b0def9ee3d4d2af30c37de847 = L.circleMarker(
+                [0.34585, 32.55865],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_bf616b42598b6017d5a3e62bec2831a1 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_a93786f7e93b4f2a75f1f31dfad1ba04 = $(`<div id="html_a93786f7e93b4f2a75f1f31dfad1ba04" style="width: 100.0%; height: 100.0%;"><b>Image:</b> batch_10_000011.jpg<br><b>Zone:</b> Kawempe Division (Bwaise - Demo GIS)<br><b>ULSI Severity:</b> 100.0/100 (Critical Dispatch)<br><b>Total Items:</b> 6 (Small: 1) | <b>Mask Area:</b> 13.428%<br><b>Materials:</b> Plastic=4, Metal=1, Glass=1, Paper=0, Other=0<br><b>HITL Triage:</b> Flagged for Inspector Review</div>`)[0];
+                popup_bf616b42598b6017d5a3e62bec2831a1.setContent(html_a93786f7e93b4f2a75f1f31dfad1ba04);
+            
+        
+
+        circle_marker_1843556b0def9ee3d4d2af30c37de847.bindPopup(popup_bf616b42598b6017d5a3e62bec2831a1)
+        ;
+
+        
+    
+    
+            var circle_marker_27fb7b60698311df0bfed090e281937e = L.circleMarker(
+                [0.2894, 32.5819],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_920a4b819d0d9f4447726f72b6ba5682 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_2d4909cd588c1fc47f4be91ccb7e8150 = $(`<div id="html_2d4909cd588c1fc47f4be91ccb7e8150" style="width: 100.0%; height: 100.0%;"><b>Image:</b> batch_10_000013.jpg<br><b>Zone:</b> Makindye Division (Katwe - Demo GIS)<br><b>ULSI Severity:</b> 8.5/100 (Low / Routine)<br><b>Total Items:</b> 1 (Small: 1) | <b>Mask Area:</b> 0.06%<br><b>Materials:</b> Plastic=0, Metal=0, Glass=0, Paper=0, Other=1<br><b>HITL Triage:</b> Auto-Verified (High Confidence)</div>`)[0];
+                popup_920a4b819d0d9f4447726f72b6ba5682.setContent(html_2d4909cd588c1fc47f4be91ccb7e8150);
+            
+        
+
+        circle_marker_27fb7b60698311df0bfed090e281937e.bindPopup(popup_920a4b819d0d9f4447726f72b6ba5682)
+        ;
+
+        
+    
+    
+            var circle_marker_9a7f59194dba0531483e20a5e1effe1f = L.circleMarker(
+                [0.32005, 32.62595],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_ace0f5e6e474815fc1d3d26cbdac3b25 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_b36df351f98b82129616323a5ba5b4d9 = $(`<div id="html_b36df351f98b82129616323a5ba5b4d9" style="width: 100.0%; height: 100.0%;"><b>Image:</b> batch_10_000014.jpg<br><b>Zone:</b> Nakawa Division (Bugolobi - Demo GIS)<br><b>ULSI Severity:</b> 10.1/100 (Low / Routine)<br><b>Total Items:</b> 1 (Small: 1) | <b>Mask Area:</b> 0.06%<br><b>Materials:</b> Plastic=1, Metal=0, Glass=0, Paper=0, Other=0<br><b>HITL Triage:</b> Auto-Verified (High Confidence)</div>`)[0];
+                popup_ace0f5e6e474815fc1d3d26cbdac3b25.setContent(html_b36df351f98b82129616323a5ba5b4d9);
+            
+        
+
+        circle_marker_9a7f59194dba0531483e20a5e1effe1f.bindPopup(popup_ace0f5e6e474815fc1d3d26cbdac3b25)
+        ;
+
+        
+    
+    
+            var circle_marker_7cd17ba8552c2b660ba1bdc38fb2832e = L.circleMarker(
+                [0.306, 32.5474],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_3a7bd168ea6401cf4168f0bf0e192991 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_e52db843790212139aa54fde85db1002 = $(`<div id="html_e52db843790212139aa54fde85db1002" style="width: 100.0%; height: 100.0%;"><b>Image:</b> batch_10_000015.jpg<br><b>Zone:</b> Rubaga Division (Ndeeba - Demo GIS)<br><b>ULSI Severity:</b> 35.4/100 (Moderate Sweep)<br><b>Total Items:</b> 3 (Small: 2) | <b>Mask Area:</b> 1.057%<br><b>Materials:</b> Plastic=3, Metal=0, Glass=0, Paper=0, Other=0<br><b>HITL Triage:</b> Flagged for Inspector Review</div>`)[0];
+                popup_3a7bd168ea6401cf4168f0bf0e192991.setContent(html_e52db843790212139aa54fde85db1002);
+            
+        
+
+        circle_marker_7cd17ba8552c2b660ba1bdc38fb2832e.bindPopup(popup_3a7bd168ea6401cf4168f0bf0e192991)
+        ;
+
+        
+    
+    
+            var circle_marker_528a27a2034b5aa1c699dbf1d56126a8 = L.circleMarker(
+                [0.32505, 32.58345],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_a678d6ce98138058a276fdad5e0390d6 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_f3e4451faacb1890b0cd555cdf5bc3ff = $(`<div id="html_f3e4451faacb1890b0cd555cdf5bc3ff" style="width: 100.0%; height: 100.0%;"><b>Image:</b> batch_1_000008.jpg<br><b>Zone:</b> Central Division (Nakasero - Demo GIS)<br><b>ULSI Severity:</b> 100.0/100 (Critical Dispatch)<br><b>Total Items:</b> 9 (Small: 0) | <b>Mask Area:</b> 99.307%<br><b>Materials:</b> Plastic=0, Metal=0, Glass=0, Paper=9, Other=0<br><b>HITL Triage:</b> Flagged for Inspector Review</div>`)[0];
+                popup_a678d6ce98138058a276fdad5e0390d6.setContent(html_f3e4451faacb1890b0cd555cdf5bc3ff);
+            
+        
+
+        circle_marker_528a27a2034b5aa1c699dbf1d56126a8.bindPopup(popup_a678d6ce98138058a276fdad5e0390d6)
+        ;
+
+        
+    
+    
+            var circle_marker_3eaa0c03ee3451e6463ae1eec5d7d119 = L.circleMarker(
+                [0.3421, 32.5724],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_91fcecb6935bb427916ec55c8264dc0d = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_f455dc82d8ad4c6c3c7ec0d936a55513 = $(`<div id="html_f455dc82d8ad4c6c3c7ec0d936a55513" style="width: 100.0%; height: 100.0%;"><b>Image:</b> ATT15_Screenshot_2020-03-14-13-12-40-133_com.miui.compass.jpg<br><b>Zone:</b> Kawempe Division (Bwaise - Demo GIS)<br><b>ULSI Severity:</b> 40.4/100 (Moderate Sweep)<br><b>Total Items:</b> 4 (Small: 3) | <b>Mask Area:</b> 1.024%<br><b>Materials:</b> Plastic=1, Metal=1, Glass=0, Paper=0, Other=2<br><b>HITL Triage:</b> Flagged for Inspector Review</div>`)[0];
+                popup_91fcecb6935bb427916ec55c8264dc0d.setContent(html_f455dc82d8ad4c6c3c7ec0d936a55513);
+            
+        
+
+        circle_marker_3eaa0c03ee3451e6463ae1eec5d7d119.bindPopup(popup_91fcecb6935bb427916ec55c8264dc0d)
+        ;
+
+        
+    
+    
+            var circle_marker_4d5aa41420d8262ebf5397b732f8cac8 = L.circleMarker(
+                [0.28565, 32.57065],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_573f7c6599085b132b8befb04f1104c1 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_c45de532f3fdabccf7204585ca35de00 = $(`<div id="html_c45de532f3fdabccf7204585ca35de00" style="width: 100.0%; height: 100.0%;"><b>Image:</b> ATT17_2.jpg<br><b>Zone:</b> Makindye Division (Katwe - Demo GIS)<br><b>ULSI Severity:</b> 0/100 (Low / Routine)<br><b>Total Items:</b> 0 (Small: 0) | <b>Mask Area:</b> 0%<br><b>Materials:</b> Plastic=0, Metal=0, Glass=0, Paper=0, Other=0<br><b>HITL Triage:</b> Auto-Verified (High Confidence)</div>`)[0];
+                popup_573f7c6599085b132b8befb04f1104c1.setContent(html_c45de532f3fdabccf7204585ca35de00);
+            
+        
+
+        circle_marker_4d5aa41420d8262ebf5397b732f8cac8.bindPopup(popup_573f7c6599085b132b8befb04f1104c1)
+        ;
+
+        
+    
+    
+            var circle_marker_965b98c04a073db2063393001542fdf3 = L.circleMarker(
+                [0.3163, 32.6147],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_90592c4807dfb56b4cf79b869a357407 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_034ae156e32c35408493d88d4353179c = $(`<div id="html_034ae156e32c35408493d88d4353179c" style="width: 100.0%; height: 100.0%;"><b>Image:</b> ATT17_Screenshot_2020-03-14-12-07-31-625_com.miui.compass.jpg<br><b>Zone:</b> Nakawa Division (Bugolobi - Demo GIS)<br><b>ULSI Severity:</b> 59.8/100 (High Priority)<br><b>Total Items:</b> 6 (Small: 6) | <b>Mask Area:</b> 0.906%<br><b>Materials:</b> Plastic=2, Metal=3, Glass=0, Paper=0, Other=1<br><b>HITL Triage:</b> Flagged for Inspector Review</div>`)[0];
+                popup_90592c4807dfb56b4cf79b869a357407.setContent(html_034ae156e32c35408493d88d4353179c);
+            
+        
+
+        circle_marker_965b98c04a073db2063393001542fdf3.bindPopup(popup_90592c4807dfb56b4cf79b869a357407)
+        ;
+
+        
+    
+    
+            var circle_marker_e5355989860eb978e3bb8fc1b90c3d8c = L.circleMarker(
+                [0.30225, 32.56115],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_e749b2c916784efbcc82976ed2a581b3 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_9394a8ecee1003aabe30ff3b122c1356 = $(`<div id="html_9394a8ecee1003aabe30ff3b122c1356" style="width: 100.0%; height: 100.0%;"><b>Image:</b> ATT18_Screenshot_2020-03-14-12-08-27-664_com.miui.compass.jpg<br><b>Zone:</b> Rubaga Division (Ndeeba - Demo GIS)<br><b>ULSI Severity:</b> 59.8/100 (High Priority)<br><b>Total Items:</b> 5 (Small: 3) | <b>Mask Area:</b> 4.87%<br><b>Materials:</b> Plastic=2, Metal=1, Glass=0, Paper=2, Other=0<br><b>HITL Triage:</b> Flagged for Inspector Review</div>`)[0];
+                popup_e749b2c916784efbcc82976ed2a581b3.setContent(html_9394a8ecee1003aabe30ff3b122c1356);
+            
+        
+
+        circle_marker_e5355989860eb978e3bb8fc1b90c3d8c.bindPopup(popup_e749b2c916784efbcc82976ed2a581b3)
+        ;
+
+        
+    
+    
+            var circle_marker_1e1e7e9c12162d40263c275f7628cfaf = L.circleMarker(
+                [0.3213, 32.5722],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_843f71a8684ddfe1b0b60a5a5eca016b);
+        
+    
+        var popup_c8d0d94f6dc8a8d770ce4168d6d2f357 = L.popup({
+  "maxWidth": 340,
+});
+
+        
+            
+                var html_7c29b09b308fd108621cbf695b0e9be0 = $(`<div id="html_7c29b09b308fd108621cbf695b0e9be0" style="width: 100.0%; height: 100.0%;"><b>Image:</b> ATT24_5-2.jpg<br><b>Zone:</b> Central Division (Nakasero - Demo GIS)<br><b>ULSI Severity:</b> 10.0/100 (Low / Routine)<br><b>Total Items:</b> 1 (Small: 1) | <b>Mask Area:</b> 0.045%<br><b>Materials:</b> Plastic=1, Metal=0, Glass=0, Paper=0, Other=0<br><b>HITL Triage:</b> Flagged for Inspector Review</div>`)[0];
+                popup_c8d0d94f6dc8a8d770ce4168d6d2f357.setContent(html_7c29b09b308fd108621cbf695b0e9be0);
+            
+        
+
+        circle_marker_1e1e7e9c12162d40263c275f7628cfaf.bindPopup(popup_c8d0d94f6dc8a8d770ce4168d6d2f357)
+        ;
+
+        
+    
+</script>
+</html>

@@ -1,0 +1,368 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5697,
+          0.3038
+        ]
+      },
+      "properties": {
+        "image": "batch_10_000010.jpg",
+        "kcca_division": "Central Division (Nakasero - Demo GIS)",
+        "latitude": 0.3038,
+        "longitude": 32.5697,
+        "total_items": 2,
+        "small_objects_count": 2,
+        "total_mask_coverage_pct": 0.178,
+        "ulsi_severity_score": 19.0,
+        "cleanup_priority": "Low / Routine",
+        "marker_color": "green",
+        "triage_status": "Flagged for Inspector Review",
+        "uncertain_items_count": 1,
+        "plastic_count": 1,
+        "metal_count": 0,
+        "glass_count": 0,
+        "paper_count": 0,
+        "other_count": 1,
+        "inference_sec": 2.016,
+        "manual_screening_proxy_sec": 19.0,
+        "assisted_screening_proxy_sec": 7.02,
+        "screening_time_saved_pct": 63.1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.55865,
+          0.34585
+        ]
+      },
+      "properties": {
+        "image": "batch_10_000011.jpg",
+        "kcca_division": "Kawempe Division (Bwaise - Demo GIS)",
+        "latitude": 0.34585,
+        "longitude": 32.55865,
+        "total_items": 6,
+        "small_objects_count": 1,
+        "total_mask_coverage_pct": 13.428,
+        "ulsi_severity_score": 100.0,
+        "cleanup_priority": "Critical Dispatch",
+        "marker_color": "red",
+        "triage_status": "Flagged for Inspector Review",
+        "uncertain_items_count": 2,
+        "plastic_count": 4,
+        "metal_count": 1,
+        "glass_count": 1,
+        "paper_count": 0,
+        "other_count": 0,
+        "inference_sec": 1.987,
+        "manual_screening_proxy_sec": 33.0,
+        "assisted_screening_proxy_sec": 6.99,
+        "screening_time_saved_pct": 78.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5819,
+          0.2894
+        ]
+      },
+      "properties": {
+        "image": "batch_10_000013.jpg",
+        "kcca_division": "Makindye Division (Katwe - Demo GIS)",
+        "latitude": 0.2894,
+        "longitude": 32.5819,
+        "total_items": 1,
+        "small_objects_count": 1,
+        "total_mask_coverage_pct": 0.06,
+        "ulsi_severity_score": 8.5,
+        "cleanup_priority": "Low / Routine",
+        "marker_color": "green",
+        "triage_status": "Auto-Verified (High Confidence)",
+        "uncertain_items_count": 0,
+        "plastic_count": 0,
+        "metal_count": 0,
+        "glass_count": 0,
+        "paper_count": 0,
+        "other_count": 1,
+        "inference_sec": 1.967,
+        "manual_screening_proxy_sec": 15.5,
+        "assisted_screening_proxy_sec": 3.47,
+        "screening_time_saved_pct": 77.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.62595,
+          0.32005
+        ]
+      },
+      "properties": {
+        "image": "batch_10_000014.jpg",
+        "kcca_division": "Nakawa Division (Bugolobi - Demo GIS)",
+        "latitude": 0.32005,
+        "longitude": 32.62595,
+        "total_items": 1,
+        "small_objects_count": 1,
+        "total_mask_coverage_pct": 0.06,
+        "ulsi_severity_score": 10.1,
+        "cleanup_priority": "Low / Routine",
+        "marker_color": "green",
+        "triage_status": "Auto-Verified (High Confidence)",
+        "uncertain_items_count": 0,
+        "plastic_count": 1,
+        "metal_count": 0,
+        "glass_count": 0,
+        "paper_count": 0,
+        "other_count": 0,
+        "inference_sec": 2.003,
+        "manual_screening_proxy_sec": 15.5,
+        "assisted_screening_proxy_sec": 3.5,
+        "screening_time_saved_pct": 77.4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5474,
+          0.306
+        ]
+      },
+      "properties": {
+        "image": "batch_10_000015.jpg",
+        "kcca_division": "Rubaga Division (Ndeeba - Demo GIS)",
+        "latitude": 0.306,
+        "longitude": 32.5474,
+        "total_items": 3,
+        "small_objects_count": 2,
+        "total_mask_coverage_pct": 1.057,
+        "ulsi_severity_score": 35.4,
+        "cleanup_priority": "Moderate Sweep",
+        "marker_color": "blue",
+        "triage_status": "Flagged for Inspector Review",
+        "uncertain_items_count": 1,
+        "plastic_count": 3,
+        "metal_count": 0,
+        "glass_count": 0,
+        "paper_count": 0,
+        "other_count": 0,
+        "inference_sec": 1.983,
+        "manual_screening_proxy_sec": 22.5,
+        "assisted_screening_proxy_sec": 6.98,
+        "screening_time_saved_pct": 69.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.58345,
+          0.32505
+        ]
+      },
+      "properties": {
+        "image": "batch_1_000008.jpg",
+        "kcca_division": "Central Division (Nakasero - Demo GIS)",
+        "latitude": 0.32505,
+        "longitude": 32.58345,
+        "total_items": 9,
+        "small_objects_count": 0,
+        "total_mask_coverage_pct": 99.307,
+        "ulsi_severity_score": 100.0,
+        "cleanup_priority": "Critical Dispatch",
+        "marker_color": "red",
+        "triage_status": "Flagged for Inspector Review",
+        "uncertain_items_count": 3,
+        "plastic_count": 0,
+        "metal_count": 0,
+        "glass_count": 0,
+        "paper_count": 9,
+        "other_count": 0,
+        "inference_sec": 2.004,
+        "manual_screening_proxy_sec": 43.5,
+        "assisted_screening_proxy_sec": 7.0,
+        "screening_time_saved_pct": 83.9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5724,
+          0.3421
+        ]
+      },
+      "properties": {
+        "image": "ATT15_Screenshot_2020-03-14-13-12-40-133_com.miui.compass.jpg",
+        "kcca_division": "Kawempe Division (Bwaise - Demo GIS)",
+        "latitude": 0.3421,
+        "longitude": 32.5724,
+        "total_items": 4,
+        "small_objects_count": 3,
+        "total_mask_coverage_pct": 1.024,
+        "ulsi_severity_score": 40.4,
+        "cleanup_priority": "Moderate Sweep",
+        "marker_color": "blue",
+        "triage_status": "Flagged for Inspector Review",
+        "uncertain_items_count": 1,
+        "plastic_count": 1,
+        "metal_count": 1,
+        "glass_count": 0,
+        "paper_count": 0,
+        "other_count": 2,
+        "inference_sec": 1.975,
+        "manual_screening_proxy_sec": 26.0,
+        "assisted_screening_proxy_sec": 6.98,
+        "screening_time_saved_pct": 73.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.57065,
+          0.28565
+        ]
+      },
+      "properties": {
+        "image": "ATT17_2.jpg",
+        "kcca_division": "Makindye Division (Katwe - Demo GIS)",
+        "latitude": 0.28565,
+        "longitude": 32.57065,
+        "total_items": 0,
+        "small_objects_count": 0,
+        "total_mask_coverage_pct": 0,
+        "ulsi_severity_score": 0,
+        "cleanup_priority": "Low / Routine",
+        "marker_color": "green",
+        "triage_status": "Auto-Verified (High Confidence)",
+        "uncertain_items_count": 0,
+        "plastic_count": 0,
+        "metal_count": 0,
+        "glass_count": 0,
+        "paper_count": 0,
+        "other_count": 0,
+        "inference_sec": 0.373,
+        "manual_screening_proxy_sec": 12.0,
+        "assisted_screening_proxy_sec": 1.87,
+        "screening_time_saved_pct": 84.4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.6147,
+          0.3163
+        ]
+      },
+      "properties": {
+        "image": "ATT17_Screenshot_2020-03-14-12-07-31-625_com.miui.compass.jpg",
+        "kcca_division": "Nakawa Division (Bugolobi - Demo GIS)",
+        "latitude": 0.3163,
+        "longitude": 32.6147,
+        "total_items": 6,
+        "small_objects_count": 6,
+        "total_mask_coverage_pct": 0.906,
+        "ulsi_severity_score": 59.8,
+        "cleanup_priority": "High Priority",
+        "marker_color": "orange",
+        "triage_status": "Flagged for Inspector Review",
+        "uncertain_items_count": 1,
+        "plastic_count": 2,
+        "metal_count": 3,
+        "glass_count": 0,
+        "paper_count": 0,
+        "other_count": 1,
+        "inference_sec": 2.037,
+        "manual_screening_proxy_sec": 33.0,
+        "assisted_screening_proxy_sec": 7.04,
+        "screening_time_saved_pct": 78.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.56115,
+          0.30225
+        ]
+      },
+      "properties": {
+        "image": "ATT18_Screenshot_2020-03-14-12-08-27-664_com.miui.compass.jpg",
+        "kcca_division": "Rubaga Division (Ndeeba - Demo GIS)",
+        "latitude": 0.30225,
+        "longitude": 32.56115,
+        "total_items": 5,
+        "small_objects_count": 3,
+        "total_mask_coverage_pct": 4.87,
+        "ulsi_severity_score": 59.8,
+        "cleanup_priority": "High Priority",
+        "marker_color": "orange",
+        "triage_status": "Flagged for Inspector Review",
+        "uncertain_items_count": 2,
+        "plastic_count": 2,
+        "metal_count": 1,
+        "glass_count": 0,
+        "paper_count": 2,
+        "other_count": 0,
+        "inference_sec": 1.944,
+        "manual_screening_proxy_sec": 29.5,
+        "assisted_screening_proxy_sec": 6.94,
+        "screening_time_saved_pct": 76.5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5722,
+          0.3213
+        ]
+      },
+      "properties": {
+        "image": "ATT24_5-2.jpg",
+        "kcca_division": "Central Division (Nakasero - Demo GIS)",
+        "latitude": 0.3213,
+        "longitude": 32.5722,
+        "total_items": 1,
+        "small_objects_count": 1,
+        "total_mask_coverage_pct": 0.045,
+        "ulsi_severity_score": 10.0,
+        "cleanup_priority": "Low / Routine",
+        "marker_color": "green",
+        "triage_status": "Flagged for Inspector Review",
+        "uncertain_items_count": 1,
+        "plastic_count": 1,
+        "metal_count": 0,
+        "glass_count": 0,
+        "paper_count": 0,
+        "other_count": 0,
+        "inference_sec": 1.935,
+        "manual_screening_proxy_sec": 15.5,
+        "assisted_screening_proxy_sec": 6.94,
+        "screening_time_saved_pct": 55.2
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+Config,Dataset,Image,Total_Items,Small_Items,Tile_Recovered,Mask_Area_Pct,ULSI_Score,Priority,Triage,Passes,Latency_ms
+ONNX_Baseline_SinglePass,TACO,batch_10_000010.jpg,0,0,0,0.0,0.0,Low / Routine,Auto-Verified (High Confidence),1,473.05
+ONNX_Baseline_SinglePass,TACO,batch_10_000011.jpg,3,0,0,9.925,87.3,Critical Dispatch,Flagged for Inspector Review,1,503.5
+ONNX_Baseline_SinglePass,TACO,batch_10_000013.jpg,2,1,0,0.593,21.4,Moderate Sweep,Flagged for Inspector Review,1,494.52
+ONNX_Baseline_SinglePass,TACO,batch_10_000014.jpg,0,0,0,0.0,0.0,Low / Routine,Auto-Verified (High Confidence),1,428.86
+ONNX_Baseline_SinglePass,TACO,batch_10_000015.jpg,2,1,0,0.768,24.0,Moderate Sweep,Flagged for Inspector Review,1,494.08
+ONNX_Baseline_SinglePass,TACO,batch_1_000008.jpg,3,0,0,41.086,100.0,Critical Dispatch,Flagged for Inspector Review,1,597.11
+ONNX_Baseline_SinglePass,pLitterStreet,ATT15_Screenshot_2020-03-14-13-12-40-133_com.miui.compass.jpg,3,2,0,0.778,33.0,Moderate Sweep,Flagged for Inspector Review,1,483.27
+ONNX_Baseline_SinglePass,pLitterStreet,ATT17_2.jpg,0,0,0,0.0,0.0,Low / Routine,Auto-Verified (High Confidence),1,372.08
+ONNX_Baseline_SinglePass,pLitterStreet,ATT17_Screenshot_2020-03-14-12-07-31-625_com.miui.compass.jpg,3,2,0,2.979,45.0,High Priority,Flagged for Inspector Review,1,425.81
+ONNX_Baseline_SinglePass,pLitterStreet,ATT18_Screenshot_2020-03-14-12-08-27-664_com.miui.compass.jpg,5,5,0,0.818,50.3,High Priority,Flagged for Inspector Review,1,413.98
+ONNX_Baseline_SinglePass,pLitterStreet,ATT24_5-2.jpg,1,1,0,0.059,10.1,Low / Routine,Flagged for Inspector Review,1,418.53
+ONNX_Proposed_Conditional_SAHI,TACO,batch_10_000010.jpg,2,2,1,0.178,19.0,Low / Routine,Flagged for Inspector Review,5,2015.76
+ONNX_Proposed_Conditional_SAHI,TACO,batch_10_000011.jpg,6,1,3,13.428,100.0,Critical Dispatch,Flagged for Inspector Review,5,1986.67
+ONNX_Proposed_Conditional_SAHI,TACO,batch_10_000013.jpg,1,1,1,0.06,8.5,Low / Routine,Auto-Verified (High Confidence),5,1967.25
+ONNX_Proposed_Conditional_SAHI,TACO,batch_10_000014.jpg,1,1,1,0.06,10.1,Low / Routine,Auto-Verified (High Confidence),5,2003.48
+ONNX_Proposed_Conditional_SAHI,TACO,batch_10_000015.jpg,3,2,2,1.057,35.4,Moderate Sweep,Flagged for Inspector Review,5,1982.9
+ONNX_Proposed_Conditional_SAHI,TACO,batch_1_000008.jpg,9,0,6,99.307,100.0,Critical Dispatch,Flagged for Inspector Review,5,2004.12
+ONNX_Proposed_Conditional_SAHI,pLitterStreet,ATT15_Screenshot_2020-03-14-13-12-40-133_com.miui.compass.jpg,4,3,3,1.024,40.4,Moderate Sweep,Flagged for Inspector Review,5,1975.26
+ONNX_Proposed_Conditional_SAHI,pLitterStreet,ATT17_2.jpg,0,0,0,0.0,0.0,Low / Routine,Auto-Verified (High Confidence),1,372.86
+ONNX_Proposed_Conditional_SAHI,pLitterStreet,ATT17_Screenshot_2020-03-14-12-07-31-625_com.miui.compass.jpg,6,6,6,0.906,59.8,High Priority,Flagged for Inspector Review,5,2037.41
+ONNX_Proposed_Conditional_SAHI,pLitterStreet,ATT18_Screenshot_2020-03-14-12-08-27-664_com.miui.compass.jpg,5,3,3,4.87,59.8,High Priority,Flagged for Inspector Review,5,1944.04
+ONNX_Proposed_Conditional_SAHI,pLitterStreet,ATT24_5-2.jpg,1,1,0,0.045,10.0,Low / Routine,Flagged for Inspector Review,5,1935.18
