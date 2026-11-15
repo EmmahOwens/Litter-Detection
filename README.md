@@ -112,8 +112,8 @@ The proposed application was deployed, verified, and benchmarked on the followin
 
 ### Step 1: Clone the Repository & Create a Python Environment
 ```bash
-git clone <YOUR_GITHUB_REPO_URL>
-cd litter-detection-capstone
+git clone https://github.com/EmmahOwens/Litter-Detection.git
+cd Litter-Detection
 
 # Create a virtual environment
 python3 -m venv .venv

@@ -16,12 +16,14 @@ This guide explains how to set up and run the **Deliverable 3 Urban Litter Insta
 
 ## 2. First-Time Installation
 
-Open a terminal inside the project root (`litter-detection-capstone/`):
+Clone the repository (or open a terminal inside the extracted project folder):
+```bash
+git clone https://github.com/EmmahOwens/Litter-Detection.git
+cd Litter-Detection
+```
 
 ### Linux / macOS
 ```bash
-cd litter-detection-capstone
-
 # 1. Create and activate a virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
