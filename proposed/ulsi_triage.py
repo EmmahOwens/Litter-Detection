@@ -25,13 +25,31 @@ MATERIAL_HAZARD_WEIGHTS: Dict[str, float] = {
 }
 
 # Validation F1-Optimal Per-Class Confidence Thresholds (from D2/D3 Validation Calibration)
-CALIBRATED_CLASS_THRESHOLDS: Dict[str, float] = {
+DEFAULT_CALIBRATED_THRESHOLDS: Dict[str, float] = {
     "Plastic": 0.31,
     "Metal": 0.34,
     "Glass": 0.26,
     "Paper": 0.19,
     "Other": 0.20,
 }
+
+
+def load_calibrated_thresholds() -> Dict[str, float]:
+    """Load thresholds from models/calibrated_thresholds.json if available."""
+    thresholds = dict(DEFAULT_CALIBRATED_THRESHOLDS)
+    json_path = Path(__file__).resolve().parent.parent / "models" / "calibrated_thresholds.json"
+    if json_path.is_file():
+        try:
+            data = json.loads(json_path.read_text(encoding="utf-8"))
+            for mat in MATERIALS:
+                if mat in data:
+                    thresholds[mat] = float(data[mat])
+        except (OSError, ValueError, TypeError):
+            pass
+    return thresholds
+
+
+CALIBRATED_CLASS_THRESHOLDS: Dict[str, float] = load_calibrated_thresholds()
 
 # Simulated Kampala / KCCA division coordinates for GIS decision-support demonstration
 KCCA_ZONES: List[Tuple[str, float, float]] = [

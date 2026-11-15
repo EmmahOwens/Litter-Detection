@@ -1,12 +1,12 @@
-image,kcca_division,latitude,longitude,total_items,small_objects_count,total_mask_coverage_pct,ulsi_severity_score,cleanup_priority,marker_color,triage_status,uncertain_items_count,plastic_count,metal_count,glass_count,paper_count,other_count,inference_sec,manual_screening_proxy_sec,assisted_screening_proxy_sec,screening_time_saved_pct,sahi_triggered,latency_ms
-batch_10_000010.jpg,Central Division (Nakasero - Demo GIS),0.3038,32.5697,2,2,0.178,19.0,Low / Routine,green,Flagged for Inspector Review,1,1,0,0,0,1,9.03,19.0,14.03,26.2,True,9029.74
-batch_10_000011.jpg,Kawempe Division (Bwaise - Demo GIS),0.34585,32.55865,6,1,13.428,100.0,Critical Dispatch,red,Flagged for Inspector Review,2,4,1,1,0,0,9.393,33.0,14.39,56.4,True,9393.17
-batch_10_000013.jpg,Makindye Division (Katwe - Demo GIS),0.2894,32.5819,1,1,0.06,8.5,Low / Routine,green,Auto-Verified (High Confidence),0,0,0,0,0,1,9.301,15.5,10.8,30.3,True,9300.62
-batch_10_000014.jpg,Nakawa Division (Bugolobi - Demo GIS),0.32005,32.62595,1,1,0.06,10.1,Low / Routine,green,Auto-Verified (High Confidence),0,1,0,0,0,0,8.297,15.5,9.8,36.8,True,8296.85
-batch_10_000015.jpg,Rubaga Division (Ndeeba - Demo GIS),0.306,32.5474,3,2,1.057,35.4,Moderate Sweep,blue,Flagged for Inspector Review,1,3,0,0,0,0,6.531,22.5,11.53,48.8,True,6531.21
-batch_1_000008.jpg,Central Division (Nakasero - Demo GIS),0.32505,32.58345,9,0,99.307,100.0,Critical Dispatch,red,Flagged for Inspector Review,3,0,0,0,9,0,7.179,43.5,12.18,72.0,True,7179.1
-ATT15_Screenshot_2020-03-14-13-12-40-133_com.miui.compass.jpg,Kawempe Division (Bwaise - Demo GIS),0.3421,32.5724,4,3,1.024,40.4,Moderate Sweep,blue,Flagged for Inspector Review,1,1,1,0,0,2,7.124,26.0,12.12,53.4,True,7123.93
-ATT17_2.jpg,Makindye Division (Katwe - Demo GIS),0.28565,32.57065,0,0,0.0,0.0,Low / Routine,green,Auto-Verified (High Confidence),0,0,0,0,0,0,1.542,12.0,3.04,74.7,False,1542.0
-ATT17_Screenshot_2020-03-14-12-07-31-625_com.miui.compass.jpg,Nakawa Division (Bugolobi - Demo GIS),0.3163,32.6147,6,6,0.906,59.8,High Priority,orange,Flagged for Inspector Review,1,2,3,0,0,1,6.659,33.0,11.66,64.7,True,6658.82
-ATT18_Screenshot_2020-03-14-12-08-27-664_com.miui.compass.jpg,Rubaga Division (Ndeeba - Demo GIS),0.30225,32.56115,5,3,4.87,59.8,High Priority,orange,Flagged for Inspector Review,2,2,1,0,2,0,6.687,29.5,11.69,60.4,True,6687.17
-ATT24_5-2.jpg,Central Division (Nakasero - Demo GIS),0.3213,32.5722,1,1,0.045,10.0,Low / Routine,green,Flagged for Inspector Review,1,1,0,0,0,0,8.379,15.5,13.38,13.7,True,8378.53
+image,kcca_division,latitude,longitude,total_items,small_objects_count,total_mask_coverage_pct,ulsi_severity_score,cleanup_priority,marker_color,triage_status,uncertain_items_count,plastic_count,metal_count,glass_count,paper_count,other_count,inference_sec,manual_screening_proxy_sec,assisted_screening_proxy_sec,screening_time_saved_pct
+batch_10_000010.jpg,Central Division (Nakasero - Demo GIS),0.3038,32.5697,3,2,1.65,37.4,Moderate Sweep,blue,Flagged for Inspector Review,1,2,0,0,0,1,1.8,22.5,6.8,69.8
+batch_10_000011.jpg,Kawempe Division (Bwaise - Demo GIS),0.34585,32.55865,11,2,24.855,100.0,Critical Dispatch,red,Flagged for Inspector Review,7,7,0,4,0,0,1.812,50.5,6.81,86.5
+batch_10_000013.jpg,Makindye Division (Katwe - Demo GIS),0.2894,32.5819,1,1,0.066,10.1,Low / Routine,green,Auto-Verified (High Confidence),0,1,0,0,0,0,0.414,15.5,1.91,87.7
+batch_10_000014.jpg,Nakawa Division (Bugolobi - Demo GIS),0.32005,32.62595,5,5,0.603,44.0,Moderate Sweep,blue,Flagged for Inspector Review,3,3,0,0,2,0,1.858,29.5,6.86,76.7
+batch_10_000015.jpg,Rubaga Division (Ndeeba - Demo GIS),0.306,32.5474,5,5,0.859,53.8,High Priority,orange,Flagged for Inspector Review,2,5,0,0,0,0,1.784,29.5,6.78,77.0
+batch_1_000008.jpg,Central Division (Nakasero - Demo GIS),0.32505,32.58345,2,0,39.43,100.0,Critical Dispatch,red,Auto-Verified (High Confidence),0,0,0,0,2,0,0.433,19.0,1.93,89.8
+ATT15_Screenshot_2020-03-14-13-12-40-133_com.miui.compass.jpg,Kawempe Division (Bwaise - Demo GIS),0.3421,32.5724,9,5,9.776,100.0,Critical Dispatch,red,Flagged for Inspector Review,2,8,0,0,0,1,1.812,43.5,6.81,84.3
+ATT17_2.jpg,Makindye Division (Katwe - Demo GIS),0.28565,32.57065,0,0,0.0,0.0,Low / Routine,green,Auto-Verified (High Confidence),0,0,0,0,0,0,0.34,12.0,1.84,84.7
+ATT17_Screenshot_2020-03-14-12-07-31-625_com.miui.compass.jpg,Nakawa Division (Bugolobi - Demo GIS),0.3163,32.6147,8,4,3.111,87.4,Critical Dispatch,red,Flagged for Inspector Review,3,5,1,0,1,1,1.783,40.0,6.78,83.0
+ATT18_Screenshot_2020-03-14-12-08-27-664_com.miui.compass.jpg,Rubaga Division (Ndeeba - Demo GIS),0.30225,32.56115,4,3,4.288,50.2,High Priority,orange,Auto-Verified (High Confidence),0,1,2,0,1,0,1.785,26.0,3.29,87.3
+ATT24_5-2.jpg,Central Division (Nakasero - Demo GIS),0.3213,32.5722,1,1,0.049,10.0,Low / Routine,green,Flagged for Inspector Review,1,1,0,0,0,0,1.755,15.5,6.76,56.4
